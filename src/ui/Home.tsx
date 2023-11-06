@@ -18,7 +18,7 @@ function Home() {
       <div className="mt-5 text-center">
         {name ? (
           <Link to="/menu">
-            <Button type="small">continue</Button>
+            <Button type="big">Continue ordering, {name}</Button>
           </Link>
         ) : (
           <CreateUser />

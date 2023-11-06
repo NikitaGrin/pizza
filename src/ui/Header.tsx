@@ -19,7 +19,7 @@ function Header() {
           </Link>
         )}
       </div>
-      <div className=" flex justify-between bg-neutral-50 px-6 py-4 shadow-sm">
+      <div className="flex justify-between bg-stone-700 px-6 py-4 text-stone-100 shadow-sm">
         <p className="uppercase">23 pizzas 23$</p>
         <Link to="/cart">OPEN CART</Link>
       </div>
