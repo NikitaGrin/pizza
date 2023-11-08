@@ -36,6 +36,10 @@ const cartSlice = createSlice({
       if (item.quantity !== 0) state.totalPrice -= item.unitPrice;
       if (item.quantity === 0) cartSlice.caseReducers.removeItem(state, action);
     },
+    clearCart: (state) => {
+      console.log(state);
+      state.items = [];
+    },
   },
 });
 
@@ -44,6 +48,7 @@ export const {
   removeItem,
   increaseItemQuantity,
   decreaseItemQuantity,
+  clearCart,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
