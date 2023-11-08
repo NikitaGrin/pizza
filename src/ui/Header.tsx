@@ -4,6 +4,7 @@ import Button from "./Button";
 
 function Header() {
   const name = useSelector((state) => state.user.name);
+  const cart = useSelector((state) => state.cart);
 
   return (
     <header className="justify-between [&>div]:border-b-2 [&>div]:border-b-slate-50">
@@ -19,10 +20,16 @@ function Header() {
           </Link>
         )}
       </div>
-      <div className="flex justify-between bg-stone-700 px-6 py-4 text-stone-100 shadow-sm">
-        <p className="uppercase">23 pizzas 23$</p>
-        <Link to="/cart">OPEN CART</Link>
-      </div>
+      {cart.items.length ? (
+        <div className="flex justify-between bg-stone-700 px-6 py-4 text-stone-100 shadow-sm">
+          <p className="uppercase">
+            {cart.items.length} pizzas ${cart.totalPrice}
+          </p>
+          <Link to="/cart">OPEN CART</Link>
+        </div>
+      ) : (
+        ""
+      )}
     </header>
   );
 }

@@ -1,7 +1,17 @@
+import { useDispatch, useSelector } from "react-redux";
 import Button from "../../ui/Button";
+import {
+  addItem,
+  decreaseItemQuantity,
+  increaseItemQuantity,
+  removeItem,
+} from "../cart/cartSlice";
+import ButtonAddItem from "../../ui/ButtonAddItem";
 
 function MenuItem({ item }) {
-  console.log(item);
+  const dispatch = useDispatch();
+  const { items } = useSelector((state) => state.cart);
+
   return (
     <div
       className={`relative rounded-xl bg-white shadow-lg ${
@@ -24,7 +34,18 @@ function MenuItem({ item }) {
 
         {!item.soldOut && (
           <div className="absolute bottom-2 right-2">
-            <Button type="small">Add to cart</Button>
+            {items.find((el) => el.id === item.id) ? (
+              <ButtonAddItem item={item} />
+            ) : (
+              <Button
+                type="small"
+                onClick={function () {
+                  dispatch(addItem(item));
+                }}
+              >
+                Add to cart
+              </Button>
+            )}
           </div>
         )}
       </div>
