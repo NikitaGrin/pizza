@@ -1,16 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../../ui/Button";
-import {
-  addItem,
-  decreaseItemQuantity,
-  increaseItemQuantity,
-  removeItem,
-} from "../cart/cartSlice";
+import { addItem } from "../cart/cartSlice";
 import ButtonAddItem from "../../ui/ButtonAddItem";
 
-function MenuItem({ item }) {
+function MenuItem({ item }: { item: any }) {
   const dispatch = useDispatch();
-  const { items } = useSelector((state) => state.cart);
+  const { items } = useSelector((state: any) => state.cart);
 
   return (
     <div
@@ -34,7 +29,7 @@ function MenuItem({ item }) {
 
         {!item.soldOut && (
           <div className="absolute bottom-2 right-2">
-            {items.find((el) => el.id === item.id) ? (
+            {items.find((el: any) => el.id === item.id) ? (
               <ButtonAddItem item={item} />
             ) : (
               <Button

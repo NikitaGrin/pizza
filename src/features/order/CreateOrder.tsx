@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import Button from "../../ui/Button";
 
 function CreateOrder() {
-  const cart = useSelector((state) => state.cart);
+  const cart = useSelector((state: any) => state.cart);
 
   return (
     <form method="POST" className="grid">

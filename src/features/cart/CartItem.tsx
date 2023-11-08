@@ -1,6 +1,6 @@
 import ButtonAddItem from "../../ui/ButtonAddItem";
 
-function CartItem({ item }) {
+function CartItem({ item }: { item: any }) {
   console.log(item);
 
   return (
