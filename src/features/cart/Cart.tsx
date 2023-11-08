@@ -25,7 +25,7 @@ function Cart() {
           {cart.items.map((item) => (
             <CartItem item={item} key={(item as any).id} />
           ))}
-          <div className="m-5 space-x-4 text-right">
+          <div className="m-5 space-x-4 space-y-4 text-right">
             <Button onClick={() => navigate("/order/new")} type="big">
               Order now
             </Button>

@@ -11,7 +11,7 @@ function ButtonAddItem({ item }: { item: any }) {
   const { items } = useSelector((state: any) => state.cart);
 
   return (
-    <div className="space-x-3">
+    <div className="space-x-2 md:space-x-3">
       <Button
         onClick={function () {
           dispatch(decreaseItemQuantity(item));
