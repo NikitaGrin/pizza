@@ -8,42 +8,34 @@ const cartSlice = createSlice({
     totalPizzas: 0,
   },
   reducers: {
-    addItem: (state: any, action) => {
+    addItem: (state, action) => {
       state.totalPrice += +action.payload.unitPrice;
       state.items.push({
         ...action.payload,
         quantity: 1 + (state.items.quantity ? state.items.quantity : 0),
       });
     },
-    removeItem: (state: any, action) => {
-      const item = state.items.find(
-        (item: any) => item.id === action.payload.id,
-      );
+    removeItem: (state, action) => {
+      const item = state.items.find((item) => item.id === action.payload.id);
       state.totalPrice -= item.unitPrice * item.quantity;
-      console.log(item.quantity);
       /* state.totalPrice -=
         +action.payload.unitPrice * state.items[action.payload].quantity; */
-      state.items = state.items.filter((el: any) => {
+      state.items = state.items.filter((el) => {
         if (el.id !== action.payload.id) return el;
       });
     },
-    increaseItemQuantity: (state: any, action) => {
-      const item = state.items.find(
-        (item: any) => item.id === action.payload.id,
-      );
+    increaseItemQuantity: (state, action) => {
+      const item = state.items.find((item) => item.id === action.payload.id);
       item.quantity++;
       state.totalPrice += item.unitPrice;
     },
-    decreaseItemQuantity: (state: any, action) => {
-      const item = state.items.find(
-        (item: any) => item.id === action.payload.id,
-      );
+    decreaseItemQuantity: (state, action) => {
+      const item = state.items.find((item) => item.id === action.payload.id);
       item.quantity--;
       if (item.quantity !== 0) state.totalPrice -= item.unitPrice;
       if (item.quantity === 0) cartSlice.caseReducers.removeItem(state, action);
     },
     clearCart: (state) => {
-      console.log(state);
       state.items = [];
     },
   },

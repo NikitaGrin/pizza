@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import Button from "./Button";
 
 function Header() {
-  const name = useSelector((state: any) => state.user.name);
-  const cart = useSelector((state: any) => state.cart);
+  const name = useSelector((state) => state.user.name);
+  const cart = useSelector((state) => state.cart);
 
   return (
     <header className="justify-between [&>div]:border-b-2 [&>div]:border-b-slate-50">

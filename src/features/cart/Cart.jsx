@@ -5,10 +5,8 @@ import Button from "../../ui/Button";
 import { clearCart } from "./cartSlice";
 
 function Cart() {
-  const cart = useSelector(
-    (state: { cart: { items: object[] } }) => state.cart,
-  );
-  const user = useSelector((state: { user: { name: string } }) => state.user);
+  const cart = useSelector((state) => state.cart);
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -23,7 +21,7 @@ function Cart() {
         <>
           <h2 className="text-xl ">Your cart{user.name && `, ${user.name}`}</h2>
           {cart.items.map((item) => (
-            <CartItem item={item} key={(item as any).id} />
+            <CartItem item={item} key={item.id} />
           ))}
           <div className="m-5 space-x-4 space-y-4 text-right">
             <Button onClick={() => navigate("/order/new")} type="big">

@@ -3,9 +3,9 @@ import Button from "../../ui/Button";
 import { addItem } from "../cart/cartSlice";
 import ButtonAddItem from "../../ui/ButtonAddItem";
 
-function MenuItem({ item }: { item: any }) {
+function MenuItem({ item }) {
   const dispatch = useDispatch();
-  const { items } = useSelector((state: any) => state.cart);
+  const { items } = useSelector((state) => state.cart);
 
   return (
     <div
@@ -29,7 +29,7 @@ function MenuItem({ item }: { item: any }) {
 
         {!item.soldOut && (
           <div className="absolute bottom-2 right-2">
-            {items.find((el: any) => el.id === item.id) ? (
+            {items.find((el) => el.id === item.id) ? (
               <ButtonAddItem item={item} />
             ) : (
               <Button

@@ -6,9 +6,9 @@ import {
 } from "../features/cart/cartSlice";
 import Button from "./Button";
 
-function ButtonAddItem({ item }: { item: any }) {
+function ButtonAddItem({ item }) {
   const dispatch = useDispatch();
-  const { items } = useSelector((state: any) => state.cart);
+  const { items } = useSelector((state) => state.cart);
 
   return (
     <div className="space-x-2 md:space-x-3">
@@ -20,7 +20,7 @@ function ButtonAddItem({ item }: { item: any }) {
       >
         -
       </Button>
-      <span>{items.find((el: any) => el.id === item.id)?.quantity}</span>
+      <span>{items.find((el) => el.id === item.id)?.quantity}</span>
       <Button
         onClick={function () {
           dispatch(increaseItemQuantity(item));

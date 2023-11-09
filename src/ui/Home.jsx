@@ -4,7 +4,7 @@ import Button from "./Button";
 import { Link } from "react-router-dom";
 
 function Home() {
-  const name = useSelector((state: any) => state.user.name);
+  const name = useSelector((state) => state.user.name);
 
   return (
     <div className=" px-16 py-20">
