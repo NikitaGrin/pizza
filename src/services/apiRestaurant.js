@@ -11,7 +11,6 @@ export async function getMenu() {
 
 export async function createOrder(newOrder) {
   try {
-    console.log(newOrder);
     const res = await fetch(`${API_URL}/order`, {
       method: "POST",
       body: JSON.stringify(newOrder),
@@ -25,5 +24,16 @@ export async function createOrder(newOrder) {
     return data;
   } catch {
     throw Error("Failed creating your order");
+  }
+}
+
+export async function getOrder(orderNumber) {
+  try {
+    const res = await fetch(`${API_URL}/order/${orderNumber}`);
+    if (!res.ok) throw Error();
+    const { data } = await res.json();
+    return await data;
+  } catch (error) {
+    throw Error("Failed getting your order");
   }
 }

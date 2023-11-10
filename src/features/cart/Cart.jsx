@@ -21,7 +21,7 @@ function Cart() {
         <>
           <h2 className="text-xl ">Your cart{user.name && `, ${user.name}`}</h2>
           {cart.items.map((item) => (
-            <CartItem item={item} key={item.id} />
+            <CartItem item={item} key={item.pizzaId} />
           ))}
           <div className="m-5 space-x-4 space-y-4 text-right">
             <Button onClick={() => navigate("/order/new")} type="big">

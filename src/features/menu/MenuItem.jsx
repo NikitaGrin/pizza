@@ -7,6 +7,17 @@ function MenuItem({ item }) {
   const dispatch = useDispatch();
   const { items } = useSelector((state) => state.cart);
 
+  function handleAddToCart() {
+    const newItem = {
+      pizzaId: item.id,
+      name: item.name,
+      quantity: 1,
+      unitPrice: item.unitPrice,
+      totalPrice: item.unitPrice * 1,
+    };
+    dispatch(addItem(newItem));
+  }
+
   return (
     <div
       className={`relative rounded-xl bg-white shadow-lg ${
@@ -29,13 +40,13 @@ function MenuItem({ item }) {
 
         {!item.soldOut && (
           <div className="absolute bottom-2 right-2">
-            {items.find((el) => el.id === item.id) ? (
+            {items.find((el) => el.id === item.pizzaId) ? (
               <ButtonAddItem item={item} />
             ) : (
               <Button
                 type="small"
                 onClick={function () {
-                  dispatch(addItem(item));
+                  handleAddToCart(item);
                 }}
               >
                 Add to cart

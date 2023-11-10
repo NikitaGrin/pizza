@@ -16,22 +16,35 @@ const cartSlice = createSlice({
       });
     },
     removeItem: (state, action) => {
-      const item = state.items.find((item) => item.id === action.payload.id);
+      const item = state.items.find(
+        (item) =>
+          item.pizzaId === action.payload.id || item.id === action.payload.id,
+      );
       state.totalPrice -= item.unitPrice * item.quantity;
       /* state.totalPrice -=
         +action.payload.unitPrice * state.items[action.payload].quantity; */
       state.items = state.items.filter((el) => {
-        if (el.id !== action.payload.id) return el;
+        console.log(JSON.stringify(el.pizzaId), action.payload);
+        if (
+          el.pizzaId !== action.payload.pizzaId ||
+          el.id !== action.payload.id
+        )
+          return el;
       });
     },
     increaseItemQuantity: (state, action) => {
-      const item = state.items.find((item) => item.id === action.payload.id);
+      const item = state.items.find(
+        (i) => i.pizzaId === action.payload.id || i.id === action.payload.id,
+      );
       item.quantity++;
       state.totalPrice += item.unitPrice;
     },
     decreaseItemQuantity: (state, action) => {
-      const item = state.items.find((item) => item.id === action.payload.id);
+      const item = state.items.find(
+        (i) => i.pizzaId === action.payload.id || i.id === action.payload.id,
+      );
       item.quantity--;
+
       if (item.quantity !== 0) state.totalPrice -= item.unitPrice;
       if (item.quantity === 0) cartSlice.caseReducers.removeItem(state, action);
     },

@@ -20,7 +20,7 @@ function ButtonAddItem({ item }) {
       >
         -
       </Button>
-      <span>{items.find((el) => el.id === item.id)?.quantity}</span>
+      <span>{items.find((el) => el.id === item.pizzaId)?.quantity}</span>
       <Button
         onClick={function () {
           dispatch(increaseItemQuantity(item));

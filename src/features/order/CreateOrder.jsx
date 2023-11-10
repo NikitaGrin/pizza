@@ -21,7 +21,7 @@ function CreateOrder() {
   return (
     <Form method="POST" className=" m-auto grid max-w-[50rem] gap-6 px-8 py-5">
       <h1 className="text-3xl font-semibold ">Ready to order?</h1>
-      <div className="grid grid-cols-[10rem_1fr]">
+      <div className="grid gap-y-3 sm:grid-cols-[10rem_1fr]">
         <label>First name</label>{" "}
         <input
           className="rounded-lg px-3 py-2"
@@ -30,7 +30,7 @@ function CreateOrder() {
           type="text"
         />
       </div>
-      <div className="grid grid-cols-[10rem_1fr]">
+      <div className="grid gap-y-3 sm:grid-cols-[10rem_1fr]">
         <label>Phone number</label>{" "}
         <input
           className="rounded-lg px-3 py-2"
@@ -39,7 +39,7 @@ function CreateOrder() {
           type="tel"
         />
       </div>
-      <div className="grid grid-cols-[10rem_1fr]">
+      <div className="grid gap-y-3 sm:grid-cols-[10rem_1fr]">
         <label>Address</label>{" "}
         <input
           className="rounded-lg px-3 py-2"
