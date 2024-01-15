@@ -1,10 +1,16 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Button from "./Button";
+import {
+  getTotalCartQuantity,
+  getTotalPrice,
+} from "../features/cart/cartSlice";
 
 function Header() {
   const name = useSelector((state) => state.user.name);
   const cart = useSelector((state) => state.cart);
+  const totalCartQuantity = useSelector(getTotalCartQuantity);
+  const totalPrice = useSelector(getTotalPrice);
 
   return (
     <header className="justify-between [&>div]:border-b-2 [&>div]:border-b-slate-50">
@@ -20,10 +26,10 @@ function Header() {
           </Link>
         )}
       </div>
-      {cart.items.length ? (
+      {totalCartQuantity ? (
         <div className="flex justify-between bg-stone-700 px-6 py-4 text-stone-100 shadow-sm">
           <p className="uppercase">
-            {cart.items.length} pizzas ${cart.totalPrice}
+            {totalCartQuantity} pizzas ${totalPrice}
           </p>
           <Link to="/cart">OPEN CART</Link>
         </div>

@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
   decreaseItemQuantity,
+  getItemQuantity,
   increaseItemQuantity,
   removeItem,
 } from "../features/cart/cartSlice";
@@ -8,22 +9,21 @@ import Button from "./Button";
 
 function ButtonAddItem({ item }) {
   const dispatch = useDispatch();
-  const { items } = useSelector((state) => state.cart);
 
   return (
     <div className="space-x-2 md:space-x-3">
       <Button
         onClick={function () {
-          dispatch(decreaseItemQuantity(item));
+          dispatch(decreaseItemQuantity(item.id));
         }}
         type="round"
       >
         -
       </Button>
-      <span>{items.find((el) => el.id === item.pizzaId)?.quantity}</span>
+      <span>{useSelector(getItemQuantity(item.id))}</span>
       <Button
         onClick={function () {
-          dispatch(increaseItemQuantity(item));
+          dispatch(increaseItemQuantity(item.id));
         }}
         type="round"
       >
@@ -32,7 +32,7 @@ function ButtonAddItem({ item }) {
       <Button
         type="small"
         onClick={function () {
-          dispatch(removeItem(item));
+          dispatch(removeItem(item.id));
         }}
       >
         Delete

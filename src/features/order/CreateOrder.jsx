@@ -2,11 +2,12 @@ import { createOrder } from "../../services/apiRestaurant";
 import { useSelector } from "react-redux";
 import Button from "../../ui/Button";
 import store from "../../store";
-import { clearCart } from "../cart/cartSlice";
+import { clearCart, getTotalPrice } from "../cart/cartSlice";
 import { Form, Link, redirect } from "react-router-dom";
 
 function CreateOrder() {
   const cart = useSelector((state) => state.cart);
+  const totalPrice = useSelector(getTotalPrice);
 
   if (!cart.items.length)
     return (
@@ -55,7 +56,7 @@ function CreateOrder() {
           name="position"
           value={`${position?.latitude},${position?.longtitude}`}
         /> */}
-        <Button type="big">Order now from ₽{cart.totalPrice}</Button>
+        <Button type="big">Order now from ${totalPrice}</Button>
       </div>
     </Form>
   );
